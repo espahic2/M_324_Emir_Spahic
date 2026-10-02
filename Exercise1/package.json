@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "check-updates": "ncu --cooldown 3d"
+    "check-updates": "ncu --cooldown 3d",
+    "demo-npx": "npx cowsay M324 mit npx"
   },
   "keywords": [],
   "author": "",

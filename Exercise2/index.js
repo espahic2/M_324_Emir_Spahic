@@ -1,8 +1,8 @@
-export const sum = (a, b) => {
+     export const sum = (a, b) => {
   return a + b + 1;
 };
 
-const unusedVariable = "Ich werde nie benutzt";
+const unusedVariable = "test";
 
 if (a == b) {
   console.log("Equal");

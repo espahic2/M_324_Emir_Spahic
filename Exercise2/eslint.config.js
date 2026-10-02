@@ -1,20 +1,20 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
+import globals from 'globals'
+import pluginJs from '@eslint/js'
 
 export default [
   {
-    languageOptions: { 
+    languageOptions: {
       globals: {
         ...globals.node,
-        ...globals.mocha
-      } 
-    }
+        ...globals.mocha,
+      },
+    },
   },
   pluginJs.configs.recommended,
   {
     rules: {
-      "eqeqeq": "error",
-      "no-console": "warn"
-    }
-  }
-];
+      eqeqeq: 'error',
+      'no-console': 'warn',
+    },
+  },
+]

@@ -1,0 +1,34 @@
+name: Exercise 2 checks
+
+on:
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "30 18 * * 3"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exercise2-verification:
+    name: Verify Exercise 2
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Exercise2
+    steps:
+      - name: Fetch source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Install Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22.13.0"
+      - name: Install dependencies from lockfile
+        run: npm ci
+      - name: Lint JavaScript
+        run: npm run lint
+      - name: Validate formatting
+        run: npm run format:check
+      - name: Run Mocha tests
+        run: npm test

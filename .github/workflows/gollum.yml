@@ -1,0 +1,23 @@
+name: Wiki activity summary
+
+on:
+  gollum:
+
+permissions:
+  contents: read
+
+jobs:
+  record-wiki-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write changed pages to the workflow summary
+        env:
+          EVENT_PATH: ${{ github.event_path }}
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const payload = JSON.parse(fs.readFileSync(process.env.EVENT_PATH, 'utf8'));
+          const pages = payload.pages ?? [];
+          const changes = pages.map((page) => `- ${page.action}: ${page.page_name} (${page.html_url})`);
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `## Wiki update\n${changes.join('\n') || '- No page details supplied'}\n`);
+          NODE

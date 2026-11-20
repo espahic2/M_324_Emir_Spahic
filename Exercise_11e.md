@@ -35,18 +35,19 @@ installation from `package-lock.json` and never changes the lockfile. It fails w
 the lockfile is absent or inconsistent with `package.json`, preventing unnoticed
 dependency drift.
 
-Before submission, create a pull request from `ci_cd` to `main`, add its URL and
-the successful Actions run URL here, and test one lint failure, one formatting
-failure and one test failure in separate commits before fixing each one. No remote
-run URL is recorded yet because this branch has not been pushed.
+The workflow passed on [pull request #1](https://github.com/espahic2/M_324_Emir_Spahic/pull/1):
+[CI run 44718542246](https://github.com/espahic2/M_324_Emir_Spahic/actions/runs/44718542246).
+Before submission, test one lint failure, one formatting failure and one test
+failure in separate commits before fixing each one.
 
 ## Task 2 – Automatic pull-request comment
 
 `.github/workflows/pr-comment.yml` runs when a pull request is opened. Comment Pull
 Request adds one acknowledgement message. The job receives only
 `pull-requests: write`, the permission needed to create that comment, and does not
-check out or run code from the pull request. Add the test PR link here after opening
-it.
+check out or run code from the pull request. It completed successfully for
+[pull request #1](https://github.com/espahic2/M_324_Emir_Spahic/pull/1):
+[workflow run 44718542216](https://github.com/espahic2/M_324_Emir_Spahic/actions/runs/44718542216).
 
 ## Task 3 – Gollum event
 
@@ -71,7 +72,9 @@ verified workflow-run URL here.
 and for manual execution. It checks out the repository and uses Scan Virus with
 ClamAV updates to inspect the checked-out files. The final job has
 `if: ${{ false }}`, so it is intentionally skipped after the initial scan test;
-confirm the skipped job in GitHub and add both run URLs here.
+the skipped job is confirmed by
+[workflow run 44718542268](https://github.com/espahic2/M_324_Emir_Spahic/actions/runs/44718542268).
+Run the scan once before the job condition is added, then record the scan output.
 
 A malware scanner looks for known patterns and signatures, so it cannot guarantee
 that all malicious content is found. New, obfuscated, encrypted or external content
